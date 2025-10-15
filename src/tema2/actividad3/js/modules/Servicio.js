@@ -1,60 +1,52 @@
-import Vehiculo from './Vehiculo.js';
-
 class Servicio {
-    constructor(TipoServicio, precio, fecha, Estado) {
-        this.TipoServicio = TipoServicio;
+
+    constructor(tipo, precio, fecha, estado, anioFabV) {
+        this.tipo = tipo;
         this.precio = precio;
-        this.fecha = fecha;
-        this.descuento = 0;
-        this.precioFinal = 0;
-        this.Estado = Estado;
+        this.fecha = new Date(fecha); // Fecha del servicio
+        this.estado = estado;
+        this.anioFabV = anioFabV;
+        this.descuento = this.calcularDescuento(); // Descuento basado en la antigüedad del vehículo
+        this.precioFinal = this.precio * (1 - this.descuento); // Precio final después del descuento
     }
 
-    calcularDescuento(anioFabV) {
-        let antiguedad = this.calcularAntiguedad(anioFabV);
 
-        switch(true) {
-            case antiguedad < 2:
-                this.descuento = 0.1;
-                break;
-            case antiguedad >= 2 && antiguedad <= 5:
-                this.descuento = 0.05;
-                break;
-            case antiguedad > 10:
-                this.descuento = 0.2;
-                break;
-            default:
-                this.descuento = 0;
-                break;
-        }
+    /**
+     *  Calcula el descuento basado en la antigüedad del vehículo
+     * @returns {number}
+     */
+    calcularDescuento() {
+        let antiguedad = this.calcularAntiguedad();
+
+        if (antiguedad < 2) return 0.10;
+        if (antiguedad >= 2 && antiguedad <= 5) return 0.05;
+        if (antiguedad > 10) return 0.20;
+        return 0;
     }
 
-    calcularAntiguedad(anioFabV) {
-        // Fecha del Vehículo
-        let dateV = new Date(anioFabV);
-        let ddV = dateV.getDate();
-        let mmV = dateV.getMonth();
-        let aaV = dateV.getFullYear();
 
-        // Fechas del Servicio
-        let dateS = new Date(this.fecha);
-        let ddS = dateS.getDate();
-        let mmS = dateS.getMonth();
-        let aaS = dateS.getFullYear();
+    /**
+     *  Calcula la antigüedad del vehículo en años
+     * @returns {number}
+     */
+    calcularAntiguedad() {
+        let ddS = this.fecha.getDate();
+        let mmS = this.fecha.getMonth();
+        let aaS = this.fecha.getFullYear();
+
+        // Año de fabricación del vehículo
+        const anioFab = new Date(this.anioFabV);
+        let ddV = anioFab.getDate();
+        let mmV = anioFab.getMonth();
+        let aaV = anioFab.getFullYear();
 
         let antiguedad = aaS - aaV;
 
-        if (mmS < mmV) {
-            antiguedad--;
-        } else if (mmS == mmV && ddS < ddV) {
+        if (mmS < mmV || mmS === mmV && ddS < ddV) {
             antiguedad--;
         }
 
         return antiguedad;
-    }
-
-    calcularPrecioFinal() {
-        this.precioFinal = this.precio * (1 - this.descuento);
     }
 }
 
