@@ -1,3 +1,7 @@
+<img width="1920" height="1080" alt="{" src="https://github.com/user-attachments/assets/d8bab36f-a239-423b-a9cb-54c4ea4a4c29" />
+
+---
+
 # 💻 Desarrollo Web en Entorno Cliente (DEW)
 
 Repositorio personal para los ejercicios, prácticas y proyectos realizados en la asignatura **Desarrollo Web en Entorno Cliente (DEW)**.  
