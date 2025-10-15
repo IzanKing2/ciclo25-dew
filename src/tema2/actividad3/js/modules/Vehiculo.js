@@ -1,26 +1,32 @@
 class Vehiculo {
-    constructor(marca, modelo, anioFab, TipoVehiculo) {
+
+    constructor (marca, modelo, anioFab, tipo) {
         this.marca = marca;
         this.modelo = modelo;
         this.anioFab = anioFab;
-        this.TipoVehiculo = TipoVehiculo;
-        this.servicios = [];
+        this.tipo = tipo;
+        this.servicios = []; // Lista de servicios asociados al vehículo
     }
 
+    /**
+     *  Agrega un servicio al vehículo
+     * @param {*} servicio 
+     */
     agregarServicio(servicio) {
-        servicio.calcularDescuento(this.anioFab);
-        servicio.calcularPrecioFinal();
         this.servicios.push(servicio);
     }
 
-    obtenerServicios() {
-        return this.servicios;
-    }
-
-    filtrarServiciosPorEstado(estado) {
+    
+    /**
+     *  Método para buscar los servicios en función del
+     *  estado.
+     * @param {*} estadoId 
+     * @returns Servicio []
+     */
+    getServiciosPorEstado(estado) {
         let serviciosFilter = [];
-        for (let servicio of this.servicios) {
-            if (estado === servicio.estado) {
+        for (servicio of this.servicios) {
+            if (servicio.estado.toLowerCase() === estado.toLowerCase()) {
                 serviciosFilter.push(servicio);
             }
         }
