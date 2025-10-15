@@ -15,6 +15,24 @@ class Vehiculo {
     agregarServicio(servicio) {
         this.servicios.push(servicio);
     }
+
+    
+    /**
+     *  Método para buscar los servicios en función del
+     *  estado.
+     * @param {*} estadoId 
+     * @returns Servicio []
+     */
+    getServiciosPorEstado(estado) {
+        let serviciosFilter = [];
+        for (servicio of this.servicios) {
+            if (servicio.estado.toLowerCase() === estado.toLowerCase()) {
+                serviciosFilter.push(servicio);
+            }
+        }
+
+        return serviciosFilter;
+    }
 }
 
 export default Vehiculo;
