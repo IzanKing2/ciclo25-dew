@@ -6,7 +6,7 @@ export class Estado {
         this.nombre = nombre;
     }
 
-    estado() {
+    static estado() {
         return [
             new Estado("Sano"),
             new Estado("En tratamiento"),

@@ -7,7 +7,7 @@ export class Especie {
         this.nombre = nombre;
     }
 
-    especie() {
+    static especie() {
         return [
             new Especie("Perro"),
             new Especie("Gato"),

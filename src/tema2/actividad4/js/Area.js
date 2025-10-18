@@ -7,7 +7,7 @@ export class Area {
         this.nombre = nombre;
     }
 
-    area() {
+    static area() {
         return [
             new Area("Ala A"),
             new Area("Ala B"),
