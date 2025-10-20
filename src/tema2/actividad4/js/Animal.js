@@ -8,6 +8,10 @@ export class Animal {
         this.actividades = [];
     }
 
+    /**
+     *  Método para agregar una actividad a un animal
+     * @param {*} actividad 
+     */
     agregarActividad(actividad) {
         this.actividades.push(actividad);
     }

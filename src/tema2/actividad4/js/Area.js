@@ -7,6 +7,10 @@ export class Area {
         this.nombre = nombre;
     }
 
+    /**
+     *  Método estático para generar areas predefinidas
+     * @returns Area []
+     */
     static area() {
         return [
             new Area("Ala A"),

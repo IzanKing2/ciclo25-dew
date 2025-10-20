@@ -35,26 +35,45 @@ const areas = Area.area(); // 0:Ala A 1:Ala B 2:Ala C
 // Estados
 const estados = Estado.estado(); // 0:Sano 1:En tratamiento 2:Crítico
 
-// Animal
-const perro = new Animal("Doggy", especies[0], 6, estados[0], areas[0]);
-perro.agregarActividad(socializacion);
-perro.agregarActividad(alimentacion);
+// Animal -------------------------------------
+const perro = new Animal("Doggy", especies[0].id, 6, estados[0].id, areas[0].id);
+perro.agregarActividad(socializacion.id);
+perro.agregarActividad(alimentacion.id);
 
-const gato = new Animal("Cat", especies[1], 3, estados[1], areas[1]);
-gato.agregarActividad(limpieza);
+const perro1 = new Animal("Milú", especies[0].id, 7, estados[0].id, areas[2].id);
+perro1.agregarActividad(alimentacion.id);
 
-const loro = new Animal("Paco", especies[2], 10, estados[2], areas[2]);
-loro.agregarActividad(atencionMedica);
+const gato = new Animal("Cat", especies[1].id, 3, estados[1].id, areas[1].id);
+gato.agregarActividad(limpieza.id);
 
-animales.push(perro, gato, loro);
+const loro = new Animal("Paco", especies[2].id, 10, estados[2].id, areas[2].id);
+loro.agregarActividad(atencionMedica.id);
 
+animales.push(perro, perro1, gato, loro);
+// -----------------------------------------------
 
 // Mostramos por consola los animales
+let sanos = 0;
+let enTratamiento = 0;
+let critico = 0;
+
+// Contamos el número de animales sanos, en tratamiento y críticos
 for (let animal of animales) {
     console.log(animal);
+    switch(animal.estado) {
+        case estados[0].id: // Sanos
+            sanos++;
+            break;
+        case estados[1].id: // En tratamiento
+            enTratamiento++;
+            break;
+        case estados[2].id: // Críticos
+            critico++;
+            break;
+    }
 }
 
-/**
+
 var ctx = document.getElementById('estadoAnimales');
 
 // Creamos el gráfico
@@ -64,7 +83,7 @@ var estadoAnimales = new Chart(ctx, {
         labels: ['Sano', 'En tratamiento', 'Crítico'], // Estados
         datasets: [{
             label: 'Sanos', // Etiqueta del conjunto de datos
-            data: [0, 0.5, 1.0], // Porcentaje
+            data: [sanos, enTratamiento, critico], // Porcentaje
             backgroundColor: [
                 'rgba(0, 218, 0, 1)',
                 '#ffbf34ff',
@@ -80,4 +99,3 @@ var estadoAnimales = new Chart(ctx, {
         }
     }
 });
-*/
