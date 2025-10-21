@@ -21,7 +21,7 @@ const v1 = new Vehiculo(
     "Hyundai",
     "Tucson",
     "2020-03-12",
-    tiposVehiculo[1]
+    tiposVehiculo[1].id
 );
 vehiculos.push(v1);
 
@@ -29,7 +29,7 @@ const v2 = new Vehiculo(
     "Dasia",
     "Sandero",
     "2012-06-02",
-    tiposVehiculo[0]
+    tiposVehiculo[0].id
 );
 vehiculos.push(v2);
 
@@ -37,7 +37,7 @@ const v3 = new Vehiculo(
     "Hyundai",
     "Ionic",
     "2024-01-22",
-    tiposVehiculo[3]
+    tiposVehiculo[3].id
 );
 vehiculos.push(v3);
 
@@ -46,36 +46,36 @@ vehiculos.push(v3);
 const servicios = []; // Lista de servicios
 
 const servicio1 = new Servicio(
-    tiposServicios[0],
+    tiposServicios[0].id,
     100,
     new Date(),
-    estados[0],
+    estados[0].id,
     v1.anioFab
 );
 servicios.push(servicio1);
 
 const servicio2 = new Servicio(
-    tiposServicios[1],
+    tiposServicios[1].id,
     180,
     new Date(),
-    estados[1],
+    estados[1].id,
     v2.anioFab
 );
 servicios.push(servicio2);
 
 const servicio3 = new Servicio(
-    tiposServicios[2],
+    tiposServicios[2].id,
     120,
     "2025-02-12",
-    estados[2],
+    estados[2].id,
     v3.anioFab
 );
 servicios.push(servicio3);
 
 // Agrego los servicios a los vehículos
-v1.agregarServicio(servicio1);
-v2.agregarServicio(servicio2);
-v3.agregarServicio(servicio3);
+v1.agregarServicio(servicio1.id);
+v2.agregarServicio(servicio2.id);
+v3.agregarServicio(servicio3.id);
 
 // Muestro los vehículos y los servicios en consola
 for (let vehiculo of vehiculos) {

@@ -1,6 +1,8 @@
 class Servicio {
+    static count = 1;
 
     constructor(tipo, precio, fecha, estado, anioFabV) {
+        this.id = Servicio.count++;
         this.tipo = tipo;
         this.precio = precio;
         this.fecha = new Date(fecha); // Fecha del servicio
