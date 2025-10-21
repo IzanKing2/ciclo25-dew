@@ -1,0 +1,1 @@
+{"version":3,"file":"Sala.d.ts","sourceRoot":"","sources":["../../src/ts/Sala.ts"],"names":[],"mappings":"AAAA,qBAAa,IAAI;IAEN,MAAM,EAAE,MAAM,CAAC;IACf,SAAS,EAAE,MAAM,CAAC;IAClB,UAAU,EAAE,MAAM,CAAC;gBAEd,MAAM,EAAE,MAAM,EAAE,SAAS,EAAE,MAAM;IAM7C,IAAI,aAAa,CAAC,GAAG,EAAE,MAAM,EAI5B;CACJ"}
