@@ -45,16 +45,22 @@ const estado2: Estado = new Estado("cancelada");
 estados.push(estado1, estado2, estado3);
 
 // Reservas --------------------------------------------------
-const r1 = new Reserva("Juan", p1, 2, new Date(), estado1.id);
-if (r1.confirmarReserva(p1.sala)) {
-    r1.calcularDescuento(p1);
+const r1 = new Reserva("Juan", p1, 2, new Date());
+if (r1.confirmarReserva()) {
+    r1.calcularDescuento();
     r1.calcularPrecio();
     console.log("✅ Reserva confirmada");
     console.log(r1);
 } else {
     console.log("❌ No se pudo confirmar su reserva");
 }
-const r2 = new Reserva("Pedro", p2, 3, new Date(), estado3.id);
-const r3 = new Reserva("Maria", p3, 1, new Date(), estado2.id);
+console.log("Butacas disoponibles sala " + r1.pelicula.sala.numero + ": " + r1.pelicula.sala.getButacasDis);
+
+r1.cancelarReserva();
+console.log("✅ Reserva cancelada")
+console.log("Butacas disoponibles sala " + r1.pelicula.sala.numero + ": " + r1.pelicula.sala.getButacasDis);
+
+const r2 = new Reserva("Pedro", p2, 3, new Date());
+const r3 = new Reserva("Maria", p3, 1, new Date());
 
 reservas.push(r1, r2, r3);

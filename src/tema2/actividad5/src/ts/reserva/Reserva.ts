@@ -13,7 +13,7 @@ export class Reserva {
     descuento: number;
     idEstado: number;
 
-    constructor(nombre: string, pelicula: Pelicula, entradas: number, fechaYhora: Date, idEstado: number) {
+    constructor(nombre: string, pelicula: Pelicula, entradas: number, fechaYhora: Date) {
         this.id = Reserva.count++;
         this.nombre = nombre;
         this.pelicula = pelicula;
@@ -21,43 +21,46 @@ export class Reserva {
         this.fechaYhora = fechaYhora;
         this.descuento = 0;
         this.precio = 0;
-        this.idEstado = idEstado; // 1: confirmada, 2: pendiente, 3: cancelada
+        this.idEstado = 2; // 1: confirmada, 2: pendiente, 3: cancelada
     }
 
     /**
      * Confirma la reserva si hay suficientes butacas disponibles
-     * @param sala Sala de cine
-     * @returns true si la reserva se ha confirmado, false en caso contrario
+     * @returns true si la reserva se ha confirmado (o ya lo estaba), false en caso contrario
      */
-    confirmarReserva(sala: Sala): boolean {
-        if (sala.haySuficientesButacas(this.entradas)) {
-            sala.ocuparButacas(this.entradas);
-            this.idEstado = 1; // confirmada
-            return true;
-        }
-        return false;
+    confirmarReserva(): boolean {
+        // idempotencia: si ya estaba confirmada, devolvemos true sin volver a ocupar
+        if (this.idEstado === 1) return true;
+
+        // si está cancelada, no permitimos re-confirmar
+        if (this.idEstado === 3) return false;
+
+        const sala = this.pelicula.sala;
+        if (!sala.haySuficientesButacas(this.entradas)) return false;
+
+        sala.ocuparButacas(this.entradas);
+        this.idEstado = 1; // confirmada
+        return true;
     }
 
     /**
-     * Cancela la reserva si esta confirmada
-     * @param sala Sala de cine
+     * Cancela la reserva; solo libera butacas si estaba confirmada
      */
-    cancelarReserva(sala: Sala): void {
-        if (this.idEstado === 1) { // solo si esta confirmada
-            sala.liberarButacas(this.entradas);
+    cancelarReserva(): void {
+        if (this.idEstado === 1) {
+            this.pelicula.sala.liberarButacas(this.entradas);
         }
         this.idEstado = 3; // cancelada
     }
 
     /**
      * Calcla el descuento de una película
-     * @param pelicula 
      */
-    calcularDescuento(pelicula: Pelicula): void {
+    calcularDescuento(): void {
         if (this.entradas > 5) {
-            this.setDescuento = 0.1;
-        } else if (pelicula.idClasificacion === 1) {
-            this.setDescuento += 0.05; // 5% de descuento adicional por ser TP
+            this.descuento = 0.1;
+        } else if (this.pelicula.idClasificacion === 1) {
+            this.descuento += 0.05;
         }
     }
 
@@ -66,27 +69,14 @@ export class Reserva {
      * @returns precio: number
      */
     calcularPrecio(): void {
-        this.precio = this.precio * this.entradas * (1 - this.descuento);
-        this.setPrecio = this.precio;
+        this.precio = this.pelicula.precio * this.entradas * (1 - this.descuento);
     }
 
     get getDescuento() {
         return this.descuento;
     }
 
-    set setDescuento(descuento: number) {
-        if (descuento > 0) {
-            this.descuento = descuento;
-        }
-    }
-
     get getPrecio() {
         return this.precio;
-    }
-
-    set setPrecio(precio: number) {
-        if (precio > 0) {
-            this.precio = precio;
-        }
     }
 }

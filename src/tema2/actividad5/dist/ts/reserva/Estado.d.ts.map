@@ -1,1 +1,0 @@
-{"version":3,"file":"Estado.d.ts","sourceRoot":"","sources":["../../../src/ts/reserva/Estado.ts"],"names":[],"mappings":"AAAA,qBAAa,MAAM;IACf,MAAM,CAAC,KAAK,EAAE,MAAM,CAAK;IAEzB,EAAE,EAAE,MAAM,CAAC;IACX,MAAM,EAAE,MAAM,CAAC;gBAEH,MAAM,EAAE,MAAM;IAK1B,IAAI,SAAS,WAEZ;IAED,IAAI,SAAS,CAAC,MAAM,EAAE,MAAM,EAQ3B;CACJ"}
