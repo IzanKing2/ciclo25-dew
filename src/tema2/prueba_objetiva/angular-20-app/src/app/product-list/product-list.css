@@ -1,0 +1,59 @@
+/* Contenedor principal */
+.product-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Grid de productos */
+.product-grid { /* Ojo: Necesitaremos cambiar el div contenedor en el HTML a esta clase si no la tiene */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Tarjeta de producto */
+.product-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #e1e1e1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+.product-card h3 {
+  margin-top: 0;
+  color: #34495e;
+  font-size: 1.5rem;
+}
+
+.price {
+  font-size: 1.25rem;
+  color: #27ae60;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #eee;
+  margin: 1rem 0;
+  width: 100%;
+}

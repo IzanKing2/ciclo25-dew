@@ -1,0 +1,29 @@
+:host {
+  display: block; /* Importante para que el componente ocupe espacio */
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: auto; /* Empuja el detalle al fondo si la tarjeta crece */
+}
+
+h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7f8c8d;
+  border-bottom: 2px solid #3498db;
+  display: inline-block;
+  padding-bottom: 0.2rem;
+}
+
+p {
+  margin: 0.5rem 0;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+strong {
+  color: #2c3e50;
+}

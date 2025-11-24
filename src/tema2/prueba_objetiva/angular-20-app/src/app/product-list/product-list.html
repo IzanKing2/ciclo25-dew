@@ -1,0 +1,16 @@
+<div class="product-container">
+    <h2>Lista de Productos</h2>
+
+    <!-- AÑADIMOS ESTE DIV CON CLASE product-grid -->
+    <div class="product-grid">
+        <div *ngFor="let product of products" class="product-card">
+            <h3>{{ product.name }}</h3>
+            <p class="price">Precio: {{ product.price }}€</p>
+
+            <hr>
+
+            <!-- Componente hijo -->
+            <app-category-detail [category]="product.category"></app-category-detail>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,11 @@ export class Estado {
         this.nombre = nombre;
     }
 
+    /**
+     *  Método estático para generar estados de 
+     *  salud predefinidos.
+     * @returns Estado []
+     */
     static estado() {
         return [
             new Estado("Sano"),

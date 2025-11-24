@@ -7,6 +7,11 @@ export class Especie {
         this.nombre = nombre;
     }
 
+    /**
+     *  Método estático para generar Especies de 
+     *  animáles predefinidas
+     * @returns Especie []
+     */
     static especie() {
         return [
             new Especie("Perro"),
