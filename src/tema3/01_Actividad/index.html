@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AA_32</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        button {
+            padding: 6px 12px;
+            margin: 2px;
+            cursor: pointer;
+        }
+
+        .eliminar {
+            background: #ff5252;
+            color: white;
+        }
+
+        .editar {
+            background: #ffc107;
+            color: black;
+        }
+
+        .actualizar {
+            background: #4caf50;
+            color: white;
+        }
+
+        .cancelar {
+            background: #2196f3;
+            color: white;
+        }
+
+        #chartContainer {
+            width: 60%;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Tabla + Edición + Chart.js (Refactorizado)</h1>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- FORMULARIO -->
+    <div>
+        <h3>Añadir nueva fila</h3>
+        <input type="text" id="nombreInput" placeholder="Nombre">
+
+        <select id="paisInput">
+            <option value="">Selecciona país</option>
+            <option value="España">España</option>
+            <option value="México">México</option>
+            <option value="Argentina">Argentina</option>
+        </select>
+
+        <select id="ciudadInput">
+            <option value="">Selecciona ciudad</option>
+        </select>
+
+        <input type="number" id="edadInput" placeholder="Edad">
+
+        <button id="btnAgregar">Añadir Fila</button>
+    </div>
+
+    <!-- TABLA -->
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>País</th>
+                <th>Ciudad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- CHART -->
+    <div id="chartContainer">
+        <h3>Cantidad de registros por País</h3>
+        <canvas id="chartPaises"></canvas>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
