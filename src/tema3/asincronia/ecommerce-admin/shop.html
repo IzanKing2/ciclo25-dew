@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tienda online con los mejores productos de tecnología y electrónica">
+    <title>Tienda - E-Commerce</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/shop.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="shop.html" class="navbar-brand">🛒 TechShop</a>
+            
+            <!-- Barra de búsqueda -->
+            <div class="search-bar">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Buscar productos..." 
+                    autocomplete="off"
+                >
+                <button class="search-btn" aria-label="Buscar">🔍</button>
+            </div>
+
+            <div class="navbar-user">
+                <span id="userDisplay">Hola, <strong>Usuario</strong></span>
+                <a href="admin.html" class="btn btn-secondary btn-sm">Panel Admin</a>
+                <button id="btnLogout" class="btn btn-danger btn-sm">Cerrar Sesión</button>
+                
+                <!-- Mini carrito en navbar -->
+                <button id="cartToggle" class="cart-toggle" aria-label="Ver carrito">
+                    🛒 <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="shop-container">
+        <!-- Sidebar de filtros -->
+        <aside class="filters-sidebar">
+            <div class="filters-header">
+                <h3>Filtros</h3>
+                <button id="clearFilters" class="btn-link">Limpiar</button>
+            </div>
+
+            <!-- Filtro por categoría -->
+            <div class="filter-group">
+                <h4>Categorías</h4>
+                <div id="categoryFilters" class="category-list">
+                    <!-- Se generan dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Filtro por precio -->
+            <div class="filter-group">
+                <h4>Precio</h4>
+                <div class="price-range">
+                    <input type="number" id="minPrice" placeholder="Mín" min="0">
+                    <span>-</span>
+                    <input type="number" id="maxPrice" placeholder="Máx" min="0">
+                </div>
+                <button id="applyPriceFilter" class="btn btn-primary btn-sm mt-1">Aplicar</button>
+            </div>
+
+            <!-- Filtro por disponibilidad -->
+            <div class="filter-group">
+                <h4>Disponibilidad</h4>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="inStockOnly">
+                    <span>Solo productos en stock</span>
+                </label>
+            </div>
+
+            <!-- Filtro por destacados -->
+            <div class="filter-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="featuredOnly">
+                    <span>Solo destacados</span>
+                </label>
+            </div>
+        </aside>
+
+        <!-- Grid de productos -->
+        <section class="products-section">
+            <div class="products-header">
+                <h2>Nuestros Productos</h2>
+                <p id="productsCount">Cargando productos...</p>
+            </div>
+
+            <div id="productsGrid" class="products-grid">
+                <!-- Los productos se generan dinámicamente -->
+            </div>
+
+            <!-- Mensaje cuando no hay productos -->
+            <div id="noProducts" class="no-products hidden">
+                <p>😕 No se encontraron productos</p>
+                <button id="resetSearch" class="btn btn-primary">Ver todos los productos</button>
+            </div>
+        </section>
+
+        <!-- Sidebar del carrito -->
+        <aside id="cartSidebar" class="cart-sidebar">
+            <div class="cart-header">
+                <h3>🛒 Tu Carrito</h3>
+                <button id="closeCart" class="close-cart" aria-label="Cerrar carrito">×</button>
+            </div>
+
+            <div id="cartItems" class="cart-items">
+                <!-- Items del carrito se generan dinámicamente -->
+            </div>
+
+            <!-- Carrito vacío -->
+            <div id="emptyCart" class="empty-cart">
+                <p>Tu carrito está vacío</p>
+                <span>¡Agrega productos para comenzar!</span>
+            </div>
+
+            <!-- Resumen del carrito -->
+            <div id="cartSummary" class="cart-summary hidden">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">0,00 €</span>
+                </div>
+                <div class="summary-row">
+                    <span>Envío:</span>
+                    <span id="cartShipping">Gratis</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="cartTotal">0,00 €</span>
+                </div>
+
+                <button id="btnCheckout" class="btn btn-primary btn-checkout">
+                    Finalizar Compra
+                </button>
+                <button id="btnClearCart" class="btn btn-danger btn-sm btn-clear">
+                    Vaciar Carrito
+                </button>
+            </div>
+        </aside>
+
+        <!-- Overlay para el carrito en móvil -->
+        <div id="cartOverlay" class="cart-overlay"></div>
+    </main>
+
+    <!-- Modal de checkout -->
+    <div id="checkoutModal" class="modal hidden">
+        <div class="modal-content checkout-modal">
+            <div class="modal-header">
+                <h3>✅ Finalizar Compra</h3>
+                <button class="modal-close" aria-label="Cerrar">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="checkout-success">
+                    <div class="success-icon">🎉</div>
+                    <h4>¡Pedido realizado con éxito!</h4>
+                    <p id="orderDetails"></p>
+                    <p class="order-note">Este es un demo. En un sistema real, aquí se procesaría el pago.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnContinueShopping" class="btn btn-primary">Seguir Comprando</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    
+    <script>
+        // Inicializar la página de la tienda cuando carga el DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            initShopPage();
+        });
+    </script>
+</body>
+
+</html>

@@ -38,6 +38,12 @@ function login(username, password) {
             message: 'Inicio de sesión exitoso'
         };
     }
+
+    // Si las credenciales son incorrectas
+    return {
+        success: false,
+        message: 'Usuario o contraseña incorrectos'
+    };
 }
 
 /**
@@ -46,7 +52,7 @@ function login(username, password) {
 function logout() {
     localStorage.removeItem(AUTH_KEY);
     localStorage.removeItem(USER_KEY);
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 }
 
 /**
@@ -70,7 +76,7 @@ function getCurrentUser() {
  */
 function protectedPage() {
     if (!isAuthenticated()) {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     }
 }
 
@@ -83,12 +89,5 @@ function redirectIfAuthenticated() {
     }
 }
 
-// ======== Exportar las funciones ========
-export {
-    login,
-    logout,
-    isAuthenticated,
-    getCurrentUser,
-    protectedPage,
-    redirectIfAuthenticated
-};
+// Las funciones están disponibles globalmente (no usamos ES modules)
+// para compatibilidad con script tags simples

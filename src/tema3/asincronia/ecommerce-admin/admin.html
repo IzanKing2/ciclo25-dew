@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administración - Gestión de productos y estadísticas">
+    <title>Admin - Panel de Administración</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="admin.html" class="navbar-brand">⚙️ Panel Admin</a>
+
+            <div class="navbar-nav">
+                <a href="shop.html" class="nav-link">🛒 Ver Tienda</a>
+            </div>
+
+            <div class="navbar-user">
+                <span id="userDisplay">Hola, <strong>Admin</strong></span>
+                <button id="btnLogout" class="btn btn-danger btn-sm">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="admin-container">
+        <!-- Dashboard de estadísticas -->
+        <section class="dashboard-section">
+            <h2>📊 Dashboard</h2>
+            <div id="statsGrid" class="stats-grid">
+                <!-- Las estadísticas se generan dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Sección de productos -->
+        <section class="products-section">
+            <div class="section-header">
+                <h2>📦 Gestión de Productos</h2>
+                <button id="btnAddProduct" class="btn btn-primary">
+                    ➕ Agregar Producto
+                </button>
+            </div>
+
+            <!-- Barra de búsqueda y filtros -->
+            <div class="table-controls">
+                <div class="search-box">
+                    <input type="text" id="searchProducts" placeholder="Buscar productos..." autocomplete="off">
+                </div>
+                <select id="filterCategory" class="filter-select">
+                    <option value="">Todas las categorías</option>
+                    <!-- Opciones generadas dinámicamente -->
+                </select>
+            </div>
+
+            <!-- Tabla de productos -->
+            <div class="table-container">
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Destacado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mensaje cuando no hay productos -->
+            <div id="noProducts" class="no-results hidden">
+                <p>No se encontraron productos</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para Agregar/Editar Producto -->
+    <div id="productModal" class="modal hidden">
+        <div class="modal-content product-modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">➕ Agregar Producto</h3>
+                <button class="modal-close" aria-label="Cerrar">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productName">Nombre del producto *</label>
+                            <input type="text" id="productName" required placeholder="Ej: Laptop HP Pavilion">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productDescription">Descripción</label>
+                        <textarea id="productDescription" rows="3" placeholder="Descripción del producto..."></textarea>
+                    </div>
+
+                    <div class="form-row two-columns">
+                        <div class="form-group">
+                            <label for="productPrice">Precio (€) *</label>
+                            <input type="number" id="productPrice" required min="0" step="0.01" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="productStock">Stock *</label>
+                            <input type="number" id="productStock" required min="0" placeholder="0">
+                        </div>
+                    </div>
+
+                    <div class="form-row two-columns">
+                        <div class="form-group">
+                            <label for="productCategory">Categoría *</label>
+                            <select id="productCategory" required>
+                                <option value="">Seleccionar categoría</option>
+                                <!-- Opciones generadas dinámicamente -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">URL de imagen</label>
+                            <input type="url" id="productImage" placeholder="https://...">
+                        </div>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="productFeatured">
+                            <span>Producto destacado</span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCancelProduct">Cancelar</button>
+                <button type="submit" form="productForm" class="btn btn-primary" id="btnSaveProduct">Guardar
+                    Producto</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación para Eliminar -->
+    <div id="deleteModal" class="modal hidden">
+        <div class="modal-content delete-modal">
+            <div class="modal-header danger">
+                <h3>⚠️ Confirmar Eliminación</h3>
+                <button class="modal-close" aria-label="Cerrar">×</button>
+            </div>
+            <div class="modal-body">
+                <p class="delete-message">
+                    ¿Estás seguro de que deseas eliminar el producto <strong id="deleteProductName"></strong>?
+                </p>
+                <p class="delete-warning">Esta acción no se puede deshacer.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCancelDelete">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmDelete">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+
+    <script>
+        // Inicializar la página de admin cuando carga el DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            initAdminPage();
+        });
+    </script>
+</body>
+
+</html>
