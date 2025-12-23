@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_Asincronía</title>
+</head>
+
+<body>
+    <script>
+        console.log("1. Inicio del programa");
+
+        // Definimos la función callback
+        function mostrarMensaje() {
+            console.log("2. Mensaje recibido (después de 2 segundos)");
+        }
+
+        // Pasamos la función 'mostrarMensaje' como argumento a setTimeout
+        // NO la ejecutamos con (), solo pasamos el nombre
+        setTimeout(mostrarMensaje, 2000);
+
+        console.log("3. Fin del programa principal");
+    </script>
+</body>
+
+</html>

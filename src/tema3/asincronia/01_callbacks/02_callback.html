@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_callbacks</title>
+</head>
+
+<body>
+    <script>
+        function buscarUsuario(callback) {
+            setTimeout(() => {
+                console.log("1. Usuario encontrado");
+                callback(); // Llamamos a la siguiente fase
+            }, 1000);
+        }
+
+        function buscarPedidos(callback) {
+            setTimeout(() => {
+                console.log("2. Pedidos encontrados");
+                callback();
+            }, 1000);
+        }
+
+        function buscarFotos(callback) {
+            setTimeout(() => {
+                console.log("3. Fotos encontradas");
+                callback();
+            }, 1000);
+        }
+
+        function buscarAmigos(callback) {
+            setTimeout(() => {
+                console.log("4. Amigos encontrados");
+                callback();
+            }, 1000);
+        }
+
+        // Ejecución anidada
+        buscarUsuario(() => {
+            buscarPedidos(() => {
+                buscarFotos(() => {
+                    buscarAmigos(() => {
+                        console.log("5. Fin del programa");
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

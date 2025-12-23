@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_promesas</title>
+</head>
+
+<body>
+    <script>
+        function buscarUsuario() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("1. Usuario encontrado");
+                    resolve(); // Éxito: la promesa se cumple
+                }, 1000);
+            });
+        }
+
+        function buscarPedidos() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // Simulamos un error para probar el catch
+                    const exito = false;
+                    if (exito) {
+                        console.log("2. Pedidos encontrados");
+                        resolve();
+                    } else {
+                        reject("Error: Servidor de pedidos caído ❌");
+                    }
+                }, 1000);
+            });
+        }
+
+        // 2. Ejecución limpia y plana
+        buscarUsuario()
+            .then(() => buscarPedidos()) // Retornamos la siguiente promesa
+            .then(() => console.log("3. Esto no se ejecutará si hay error"))
+            .catch((error) => {
+                // 3. Captura cualquier error de la cadena anterior
+                console.log("¡Ups! Algo salió mal:", error);
+            });
+    </script>
+</body>
+
+</html>
