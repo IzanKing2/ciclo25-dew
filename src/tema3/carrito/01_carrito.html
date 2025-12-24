@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_carrito</title>
+</head>
+
+<body>
+    <h1>Carrito de la Compra</h1>
+    <div id="items"></div>
+    <button type="submit">Vaciar carrito</button>
+    <button type="submit">Finalizar compra</button>
+
+    <script>
+        const productos = [
+            {
+                nombre: "Laptop",
+                precio: 120.21,
+                color: "Blanco",
+                descripcion: "Portatil de 24 pulgadas ..."
+            },
+            {
+                nombre: "Razer Viper",
+                precio: 90.12,
+                color: "Negro",
+                descripcion: "Ratón Viper de razer ligero ..."
+            }
+        ];
+
+        const itemsContainer = document.getElementById('items');
+        const listaProductos = document.createElement('ul');
+
+        productos.forEach(producto => {
+            const li = document.createElement('li');
+            const eliminar = document.createElement('button');
+
+            // Configuración del botón
+            eliminar.textContent = 'borrar';
+            eliminar.type = "submit";
+
+            // Contenido del producto
+            // Usamos append para añadir texto y el botón al mismo li
+            li.append(`${producto.nombre} - ${producto.precio}€ `, eliminar);
+
+            listaProductos.appendChild(li);
+        });
+
+        itemsContainer.appendChild(listaProductos);
+    </script>
+</body>
+
+</html>

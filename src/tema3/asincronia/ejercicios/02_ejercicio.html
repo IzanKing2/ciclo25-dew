@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_ejercicio</title>
+</head>
+
+<body>
+    <script>
+        // Ejercicio 2: El proceso de compra async
+        // Objetivo: Crear una función usando async y await
+
+        function verificarStock() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const exito = true;
+                    if (exito) {
+                        resolve("Stock disponible"); // Éxito: la promesa se cumple
+                    } else {
+                        reject("Error: No se ha encontrado stock ❌");
+                    }
+                }, 2000);
+            });
+        }
+
+        function cobrarCompra() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const exito = true;
+                    if (exito) {
+                        resolve("Pago realizado");
+                    } else {
+                        reject("Error: No se pudo realizar el cobro ❌")
+                    }
+                }, 1000);
+            });
+        }
+
+        // Ejecución asíncrona
+        async function procesarPedido() {
+            try {
+                const stockMsg = await verificarStock();
+                console.log(stockMsg);
+                const pagoMsg = await cobrarCompra();
+                console.log(pagoMsg);
+                console.log("Fin del programa...");
+            } catch (error) {
+                console.log("¡Ups! Ocurrió un error:", error);
+            }
+        }
+
+        procesarPedido();
+    </script>
+</body>
+
+</html>

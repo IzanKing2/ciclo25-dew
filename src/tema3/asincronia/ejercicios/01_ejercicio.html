@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_ejercicio</title>
+</head>
+
+<body>
+    <script>
+        // Ejercicio 1: El proceso de compra
+        // Objetivo: Crear y consumir promesas encadenadas
+
+        function verificarStock() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const exito = true;
+                    if (exito) {
+                        resolve("Stock disponible"); // Éxito: la promesa se cumple
+                    } else {
+                        reject("Error: No se ha encontrado stock ❌");
+                    }
+                }, 2000);
+            });
+        }
+
+        function cobrarCompra() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const exito = true;
+                    if (exito) {
+                        console.log("2. Pago realizado");
+                        resolve();
+                    } else {
+                        reject("Error: No se pudo realizar el cobro ❌")
+                    }
+                }, 1000);
+            });
+        }
+
+        // Ejecución anidada
+        verificarStock()
+            .then((msg) => {
+                console.log(msg);
+                return cobrarCompra();
+            }) // Retornamos la siguiente promesa
+            .then(() => console.log("3. Fin del programa"))
+            .catch((error) => {
+                // 3. Capturar cualquier error anterior
+                console.log("¡Ups! Algo salió mal:", error);
+            });
+    </script>
+</body>
+
+</html>
