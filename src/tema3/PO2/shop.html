@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - Catálogo</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/shop.css">
+    <link rel="stylesheet" href="css/components/buttons.css">
+    <link rel="stylesheet" href="css/components/alert-message.css">
+    <link rel="stylesheet" href="css/components/card.css">
+    <link rel="stylesheet" href="css/components/navbar/navbar.css">
+
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <header class="shop-hero">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="#" class="navbar-brand">🎮 GameShop</a>
+
+                <!-- Barra de búsqueda -->
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Buscar productos..." autocomplete="off">
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+
+                <div class="navbar-user">
+                    <span id="userDisplay">Hola, <strong>Usuario</strong></span>
+                    <a href="#" class="btn btn-secondary btn-sm">Panel Admin</a>
+                    <button id="btnLogout" class="btn btn-danger btn-sm">Cerrar Sesión</button>
+
+                    <!-- Mini carrito en navbar -->
+                    <button id="cartToggle" class="cart-toggle" aria-label="Ver carrito">
+                        🛒 <span id="cartCount" class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="hero-title">
+            <h1>Explora nuestra Colección</h1>
+            <p>Descubre los mejores productos con diseños exclusivos</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Layout con Sidebar y Grid -->
+        <div class="shop-layout">
+
+            <!-- Botón Toggle para Móvil -->
+            <button class="filter-toggle"
+                onclick="document.querySelector('.filters-sidebar').classList.toggle('active')">
+                Filtrar Productos +
+            </button>
+
+            <!-- Sidebar -->
+            <aside class="filters-sidebar">
+                <div class="filter-group category-group">
+                    Categorías
+                </div>
+
+                <div class="filter-group">
+                    <h3>Precio</h3>
+                    <label class="filter-option">
+                        <input type="radio" name="price"> Menor a $50
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="price"> $50 - $100
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="price"> Mayor a $100
+                    </label>
+                </div>
+            </aside>
+
+            <!-- Grid de Productos -->
+            <main class="products-grid">
+
+                <!-- Producto 1 -->
+                <article class="product-card">
+                    <img src="https://placehold.co/300x200" alt="Producto" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Electrónica</span>
+                        <h2 class="product-title">Cámara Profesional 4K</h2>
+                        <p class="product-price">$450.00</p>
+                        <button class="btn-add-cart">Añadir al Carrito</button>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="product-card">
+                    <img src="https://placehold.co/300x200" alt="Producto" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Moda</span>
+                        <h2 class="product-title">Chaqueta de Invierno</h2>
+                        <p class="product-price">$89.99</p>
+                        <button class="btn-add-cart">Añadir al Carrito</button>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="product-card">
+                    <img src="https://placehold.co/300x200" alt="Producto" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Hogar</span>
+                        <h2 class="product-title">Lámpara de Escritorio</h2>
+                        <p class="product-price">$25.50</p>
+                        <button class="btn-add-cart">Añadir al Carrito</button>
+                    </div>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="product-card">
+                    <img src="https://placehold.co/300x200" alt="Producto" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Deportes</span>
+                        <h2 class="product-title">Set de Pesas</h2>
+                        <p class="product-price">$120.00</p>
+                        <button class="btn-add-cart">Añadir al Carrito</button>
+                    </div>
+                </article>
+
+                <!-- Paginación -->
+                <div class="pagination">
+                    <a href="#" class="page-link">Anterior</a>
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <a href="#" class="page-link">Siguiente</a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+    <script type="module" src="js/utils.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
