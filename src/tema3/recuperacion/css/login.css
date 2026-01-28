@@ -1,27 +1,25 @@
-/* templates/login/login.css */
-
-/* Utiliza variables de ../../css-global/variables.css */
-
-body {
-    background-color: var(--bg-color-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    font-family: var(--font-style);
-}
+/* login.css - Estilos para la página de login */
 
 .login-container {
-    background-color: #fff;
-    padding: 2.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    width: 100%;
-    max-width: 400px;
-    animation: fadeIn 0.5s ease-out;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
 }
 
-@keyframes fadeIn {
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
     from {
         opacity: 0;
         transform: translateY(-20px);
@@ -33,88 +31,129 @@ body {
     }
 }
 
-.login-header {
-    margin-bottom: 2rem;
+.login-box h1 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 28px;
     text-align: center;
 }
 
-.login-header h2 {
-    color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.login-header p {
-    color: var(--text-muted);
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
+    margin-bottom: 8px;
+    color: #333;
     font-weight: 500;
+    font-size: 14px;
 }
 
-.form-control {
+.form-group input {
     width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    padding: 12px;
+    border: 2px solid #e1e1e1;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
 }
 
-.form-control:focus {
+.form-group input:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
 }
 
-.btn-login {
+.error-message {
+    background-color: #fee;
+    color: #c33;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-left: 4px solid #c33;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.error-message.hidden {
+    display: none;
+}
+
+.btn-primary {
     width: 100%;
-    padding: 0.75rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: #fff;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
     border: none;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
+    border-radius: 6px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.btn-login:hover {
+.btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(118, 75, 162, 0.3);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
-.login-footer {
-    margin-top: 1.5rem;
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.demo-credentials {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    font-size: 13px;
     text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-muted);
 }
 
-.login-footer a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
+.demo-credentials p {
+    margin: 5px 0;
+    color: #555;
 }
 
-.login-footer a:hover {
-    color: var(--secondary-color);
-    text-decoration: underline;
+.demo-credentials code {
+    background-color: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    color: #667eea;
 }
 
-/* Responsive adjustments if needed, though simpler forms adapt well */
+/* Responsive */
 @media (max-width: 480px) {
-    .login-container {
-        padding: 1.5rem;
-        margin: 1rem;
+    .login-box {
+        padding: 30px 20px;
+    }
+
+    .login-box h1 {
+        font-size: 24px;
     }
 }

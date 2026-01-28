@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema Admin</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Inicio de Sesión</h1>
+            <p class="subtitle">Panel de Administración</p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Ingrese su usuario"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Ingrese su contraseña"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <div id="errorMessage" class="error-message hidden"></div>
+
+                <button type="submit" class="btn-primary">Iniciar Sesión</button>
+            </form>
+
+            <div class="demo-credentials">
+                <p><strong>Credenciales de prueba:</strong></p>
+                <p>Usuario: <code>admin</code></p>
+                <p>Contraseña: <code>admin123</code></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Redirigir si ya está autenticado
+        redirectIfAuthenticated();
+
+        // Manejar el formulario de login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const errorMesg = document.getElementById('errorMessage');
+
+            // Intentar login
+            const result = login(username, password);
+
+            if (result.success) {
+                // Redirigir al panel de admin
+                window.location.href = 'admin.html';
+            } else {
+                // Mostrar error
+                errorMesg.textContent = result.message;
+                errorMesg.classList.remove('hidden');
+
+                // Ocultar el error después de 3 segundos
+                setTimeout(() => {
+                    errorMesg.classList.add('hidden');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+
+</html>
