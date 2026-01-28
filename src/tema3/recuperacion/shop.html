@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - Catálogo</title>
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/shop.css">
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <header class="shop-hero">
+        <div class="container">
+            <h1>Explora nuestra Colección</h1>
+            <p>Descubre los mejores productos con diseños exclusivos</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Layout con Sidebar y Grid -->
+        <div class="shop-layout">
+
+            <!-- Botón Toggle para Móvil -->
+            <button class="filter-toggle"
+                onclick="document.querySelector('.filters-sidebar').classList.toggle('active')">
+                Filtrar Productos +
+            </button>
+
+            <!-- Sidebar -->
+            <aside class="filters-sidebar">
+                <div class="filter-group">
+                    <h3>Categorías</h3>
+                    <label class="filter-option">
+                        <input type="checkbox"> Electrónica
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox"> Moda
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox"> Hogar
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox"> Deportes
+                    </label>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Precio</h3>
+                    <label class="filter-option">
+                        <input type="radio" name="price"> Menor a $50
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="price"> $50 - $100
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="price"> Mayor a $100
+                    </label>
+                </div>
+            </aside>
+
+            <!-- Grid de Productos -->
+            <main class="products-grid">
+
+                <!-- Producto 1 -->
+                <article class="product-card">
+                    <img src="https://placehold.co/300x200" alt="Producto" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Electrónica</span>
+                        <h2 class="product-title">Cámara Profesional 4K</h2>
+                        <p class="product-price">$450.00</p>
+                        <button class="btn-add-cart">Añadir al Carrito</button>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="product-card">
+                    <img src="https://placehold.co/300x200" alt="Producto" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Moda</span>
+                        <h2 class="product-title">Chaqueta de Invierno</h2>
+                        <p class="product-price">$89.99</p>
+                        <button class="btn-add-cart">Añadir al Carrito</button>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="product-card">
+                    <img src="https://placehold.co/300x200" alt="Producto" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Hogar</span>
+                        <h2 class="product-title">Lámpara de Escritorio</h2>
+                        <p class="product-price">$25.50</p>
+                        <button class="btn-add-cart">Añadir al Carrito</button>
+                    </div>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="product-card">
+                    <img src="https://placehold.co/300x200" alt="Producto" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Deportes</span>
+                        <h2 class="product-title">Set de Pesas</h2>
+                        <p class="product-price">$120.00</p>
+                        <button class="btn-add-cart">Añadir al Carrito</button>
+                    </div>
+                </article>
+
+                <!-- Paginación -->
+                <div class="pagination">
+                    <a href="#" class="page-link">Anterior</a>
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <a href="#" class="page-link">Siguiente</a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>
