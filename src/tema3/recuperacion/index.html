@@ -18,26 +18,14 @@
             <form id="loginForm">
                 <div class="form-group">
                     <label for="username">Usuario</label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        name="username" 
-                        placeholder="Ingrese su usuario"
-                        autocomplete="username"
-                        required
-                    >
+                    <input type="text" id="username" name="username" placeholder="Ingrese su usuario"
+                        autocomplete="username" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
-                        placeholder="Ingrese su contraseña"
-                        autocomplete="current-password"
-                        required
-                    >
+                    <input type="password" id="password" name="password" placeholder="Ingrese su contraseña"
+                        autocomplete="current-password" required>
                 </div>
 
                 <div id="errorMessage" class="error-message hidden"></div>
@@ -53,31 +41,25 @@
         </div>
     </div>
 
-    <script src="js/auth.js"></script>
+    <script type="module" src="js/auth.js"></script>
     <script>
-        // Redirigir si ya está autenticado
         redirectIfAuthenticated();
 
-        // Manejar el formulario de login
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
             const errorMesg = document.getElementById('errorMessage');
 
-            // Intentar login
             const result = login(username, password);
 
             if (result.success) {
-                // Redirigir al panel de admin
                 window.location.href = 'admin.html';
             } else {
-                // Mostrar error
                 errorMesg.textContent = result.message;
                 errorMesg.classList.remove('hidden');
 
-                // Ocultar el error después de 3 segundos
                 setTimeout(() => {
                     errorMesg.classList.add('hidden');
                 }, 3000);
