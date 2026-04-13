@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IzanShop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="login-box">
+            <h2 class="login-title">Login</h2>
+            <small class="login-text">Inicia sesión para continuar</small>
+
+            <form class="login-form" id="loginForm">
+                <input type="email" class="login-input" id="email" placeholder="admin@test.com" required>
+                <input type="password" class="login-input" id="password" placeholder="password" required>
+                <button type="submit" class="login-btn" id="loginBtn">Iniciar Sesión</button>
+            </form>
+
+            <p class="login-foot">&copy; 2026 Izan Coder</p>
+        </div>
+    </div>
+
+    <script type="module" src="./js/auth.js"></script>
+    <script type="module">
+        import { login } from './js/auth.js';
+
+        const loginForm = document.querySelector('#loginForm');
+            
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.querySelector('#email').value;
+            const password = document.querySelector('#password').value;
+
+            if (login(email, password)) {
+                window.location.href = 'index.html';
+            } else {
+                alert('Email o contraseña incorrectos');
+            }
+        });
+    </script>
+</body>
+</html>

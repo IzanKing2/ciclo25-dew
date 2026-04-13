@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IzanShop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/modal.css">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <aside>
+            <header>
+                <h1 class="logo">IzanShop</h1>
+            </header>
+            <nav>
+                <ul>
+                    <li>
+                        <a class="btn-menu btn-back" href="./index.html"><i class="bi bi-arrow-return-left"></i> Seguir comprando</a>
+                    </li>
+                    <li>
+                        <a class="btn-menu btn-cart active" href="./dashboard.html"><i class="bi bi-gear-wide"></i> Panel Admin <span class="num">0</span></a>
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <p class="text-footer">&copy; 2026 Izan Coder</p>
+            </footer>
+        </aside>
+        <main>
+            <h2 class="main-title">Panel de Administrador</h2>
+            <div class="cart-container">
+                <p class="empty-cart">Tu carrito está vacío. <i class="bi bi-emoji-frown"></i></p>
+
+                <button class="admin-create-product">Crear producto</button>
+                <div class="cart-products">
+                    <div class="cart-product">
+                        <img class="cart-product-img" src="./img/pc/01.webp" alt="">
+                        <div class="cart-product-title">
+                            <small>Título</small>
+                            <h3>Ordenador 01</h3>
+                        </div>
+                        <div class="cart-product-quantity">
+                            <small>Cantidad</small>
+                            <p>1</p>
+                        </div>
+                        <div class="cart-product-price">
+                            <small>Precio</small>
+                            <p>800€</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="cart-product-delete"><i class="bi bi-pencil-fill"></i></button>
+                            <button class="cart-product-delete"><i class="bi bi-trash-fill"></i></button>
+                        </div>
+                    </div>
+                    <div class="cart-product">
+                        <img class="cart-product-img" src="./img/pc/02.webp" alt="">
+                        <div class="cart-product-title">
+                            <small>Título</small>
+                            <h3>Ordenador 02</h3>
+                        </div>
+                        <div class="cart-product-quantity">
+                            <small>Cantidad</small>
+                            <p>2</p>
+                        </div>
+                        <div class="cart-product-price">
+                            <small>Precio</small>
+                            <p>800€</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="cart-product-delete"><i class="bi bi-pencil-fill"></i></button>
+                            <button class="cart-product-delete"><i class="bi bi-trash-fill"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="./js/dashboard.js"></script>
+</body>
+</html>
