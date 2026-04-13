@@ -1,25 +1,37 @@
-import Product from "./models/Product.js";
 import Category from "./models/Category.js";
+import Product from "./models/Product.js";
+import Role from "./models/Role.js";
+import User from "./models/User.js";
 
-
-// CATEGORIAS
-const CATEGORIES = [
-    new Category(1, 'Acción'),
-    new Category(2, 'Aventura'),
-    new Category(3, 'Terror'),
-    new Category(4, 'RPG')
+const categories = [
+    new Category('Ordenadores'),
+    new Category('Periféricos'),
+    new Category('Consolas')
 ];
 
-let action = CATEGORIES.find(category => category.id === 1);
-let adventure = CATEGORIES.find(category => category.id === 2);
-let terror = CATEGORIES.find(category => category.id === 3);
-let rpg = CATEGORIES.find(category => category.id === 4);
-
-// PRODUCTOS
-const PRODUCTS = [
-    new Product(1, "Marvel's Spider-Man", null, 12.29, 10, [action], 'https://gaming-cdn.com/images/products/11907/616x353/marvel-s-spider-man-remastered-pc-juego-steam-cover.jpg?v=1697644479'),
-    new Product(2, "Uncharted: Legacy of Thieves", null, 44.68, 4, [action, adventure], 'https://gaming-cdn.com/images/products/9551/616x353/uncharted-legacy-of-thieves-collection-playstation-5-juego-playstation-store-europe-cover.jpg?v=1730134622'),
-    new Product(3, "The Last Of Us Part II Remastered ", null, 29.97, 2, [action, terror], 'https://gaming-cdn.com/images/products/6215/616x353/the-last-of-us-part-ii-remastered-pc-steam-cover.jpg?v=1750336184'),
-    new Product(4, "The Witcher 3: Wild Hunt", null, 9.13, 14, [action, adventure, rpg], 'https://gaming-cdn.com/images/products/15233/616x353/the-witcher-3-wild-hunt-complete-edition-complete-edition-xbox-one-xbox-series-x-s-juego-microsoft-store-europe-cover.jpg?v=1739353046'),
-    new Product(5, "God of War: Ragnarök", null, 27.99, 12, [action], 'https://gaming-cdn.com/images/products/16797/616x353/god-of-war-ragnarok-pc-steam-cover.jpg?v=1755004824'),
+const products = [
+    new Product('PC 01', './img/pc/01.webp', categories[0].id, 1369.00),
+    new Product('PC 02', './img/pc/02.webp', categories[0].id, 1619.00),
+    new Product('PC 03', './img/pc/03.webp', categories[0].id, 1469.00),
+    new Product('PC 04', './img/pc/04.webp', categories[0].id, 2469.00),
+    new Product('Periférico 01', './img/perifericos/01.webp', categories[1].id, 260.00),
+    new Product('Periférico 02', './img/perifericos/02.webp', categories[1].id, 86.00),
+    new Product('Periférico 03', './img/perifericos/03.webp', categories[1].id, 112.00),
+    new Product('Periférico 04', './img/perifericos/04.webp', categories[1].id, 62.00),
+    new Product('Consola 01', './img/consolas/01.webp', categories[2].id, 499.00),
+    new Product('Consola 02', './img/consolas/02.webp', categories[2].id, 569.00),
+    new Product('Consola 03', './img/consolas/03.webp', categories[2].id, 426.00),
+    new Product('Consola 04', './img/consolas/04.webp', categories[2].id, 388.00),
 ];
+
+const roles = [
+    new Role('User'),
+    new Role('Admin')
+];
+
+const users = [
+    new User('Admin', 'Administrador', 'admin@test.com', 'password', roles[1].id),
+    new User('User', 'Usuario', 'user@test.com', 'password', roles[0].id, 'C/ Praga 42', 'Mastercard')
+];
+
+export { categories, products, roles, users }

@@ -1,12 +1,10 @@
-// model/Category.js
-
 class Category {
-    constructor(id, name, description='') {
-        this.id = id;
+    static countId = 0;
+
+    constructor (name) {
+        this.id = Category.countId++;
         this.name = name;
-        this.description = description;
     }
 }
-
 
 export default Category;

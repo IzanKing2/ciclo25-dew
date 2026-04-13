@@ -1,60 +1,40 @@
-import { User } from "./models/User.js";
+import { users, roles } from "./data.js";
 
+const adminRole = roles.find(role => role.name === 'Admin');
+const adminUser = users.find(user => user.role_id === adminRole.id);
 
-const ADMIN_CREDENTIALS = new User(1, 'admin', 'admin123');
+const AUTH_CREDENTIALS = {
+    AUTH_KEY: 'isAuthenticated',
+    USER_KEY: 'currentUser'
+};
 
-const AUTH_KEY = 'isAuthenticated';
-const USER_KEY = 'currentUser';
+function login(email, password) {
+    const user = users.find(user => user.email === email);
 
-function getCurrentUser() {
-    let currentUser = localStorage.getItem(USER_KEY);
-    return currentUser;
-}
-
-function isAuthenticated() {
-    return localStorage.getItem(AUTH_KEY) === 'true';
-}
-
-function redirectIfAuthenticated() {
-    if (isAuthenticated()) {
-        window.location.href = 'admin.html';
+    if (user && email === adminUser.email && password === adminUser.password) {
+        localStorage.setItem(AUTH_CREDENTIALS.AUTH_KEY, 'true');
+        localStorage.setItem(AUTH_CREDENTIALS.USER_KEY, user.id);
+        return true;
     }
-}
-
-function protectedPage() {
-    if (!isAuthenticated()) {
-        window.location.href = 'index.html';
-    }
-}
-
-function login(username, password) {
-    if (!username || !password) {
-        return {
-            success: false,
-            message: 'Por favor completa todos los campos'
-        }
-    }
-
-    if (username === ADMIN_CREDENTIALS.username &&
-        password === ADMIN_CREDENTIALS.password) {
-
-        localStorage.setItem(AUTH_KEY, 'true');
-        localStorage.setItem(USER_KEY, username);
-
-        return {
-            success: true,
-            message: 'Inicio de sesión exitoso'
-        }
-    }
-
-    return {
-        success: false,
-        message: 'Usuario o contraseña incorrectos'
-    }
+    return false;
 }
 
 function logout() {
-    localStorage.removeItem(AUTH_KEY);
-    localStorage.removeItem(USER_KEY);
-    window.location.href = 'index.html';
+    if (isAuthenticated) {
+        localStorage.removeItem(AUTH_CREDENTIALS.AUTH_KEY);
+        localStorage.removeItem(AUTH_CREDENTIALS.USER_KEY);
+        return true;
+    }
+    return false;
 }
+
+function isAuthenticated() {
+    return localStorage.getItem(AUTH_CREDENTIALS.AUTH_KEY) === 'true';
+}
+
+function getCurrentUser() {
+    const currentUser = users.find(user => user.id === localStorage.getItem(AUTH_CREDENTIALS.USER_KEY));
+    return currentUser;
+}
+
+export { login, logout, isAuthenticated, getCurrentUser };
