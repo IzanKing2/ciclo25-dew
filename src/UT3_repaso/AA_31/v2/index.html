@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de productos dinámica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>TABLA DINÁMICA</h1>
+    </header>
+    <main>
+        <section id="formSection">
+            <h2>Producto</h2>
+            <form id="productForm">
+                <div id="errorMessage" class="form-group error-message hidden"></div>
+                <div class="form-group">
+                    <label>*Nombre:</label>
+                    <input id="name" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Descripción:</label>
+                    <textarea id="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>*Stock:</label>
+                    <input id="stock" class="num-input" type="number" required>
+                </div>
+                <div class="form-group">
+                    <label>*Precio:</label>
+                    <input id="price" type="number" required>
+                </div>
+                <div class="form-group checkbox-type">
+                    <input id="featured" type="checkbox"><p>Destacado</p>
+                </div>
+                <button type="submit">Guardar producto</button>
+            </form>
+        </section>
+
+        <section id="tableSection">
+            <table class="prod-table">
+                <th class="prod-col">Nombre</th>
+                <th class="prod-col">Descripción</th>
+                <th class="prod-col">Stock</th>
+                <th class="prod-col">Precio</th>
+                <th class="prod-col">Destacado</th>
+            </table>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <footer>&copy; 2026. Izan Carlo Celis Afonso</footer>
+</body>
+</html>

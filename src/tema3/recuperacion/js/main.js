@@ -105,10 +105,13 @@ btnCategories.forEach(btn => {
         e.currentTarget.classList.add("active");
 
         if (e.currentTarget.id != 'todos') {
-            const productCat = products.find(product => product.category_id == e.currentTarget.id);
-            const category = categories.find(cat => cat.id === productCat.category_id);
-            mainTitle.innerText = category.name;
-            const selectProducts = products.filter(product => product.category_id == e.currentTarget.id);
+            const categoryId = parseInt(e.currentTarget.id);
+            
+            const category = categories.find(cat => cat.id === categoryId);
+            mainTitle.innerText = category ? category.name : 'Productos';
+            
+            const selectProducts = products.filter(product => product.category_id === categoryId);
+            
             await loadProducts(selectProducts);
         } else {
             mainTitle.innerText = 'Todos los productos';
@@ -192,6 +195,9 @@ function updateCartIndicator() {
 function checkAuth() {
     if (!isAuthenticated()) {
         window.location.href = 'login.html';
+    } else {
+        // Si está logueado, revelamos la página
+        document.body.style.display = 'block'; 
     }
 }
 

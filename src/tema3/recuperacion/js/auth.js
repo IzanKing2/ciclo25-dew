@@ -20,7 +20,7 @@ function login(email, password) {
 }
 
 function logout() {
-    if (isAuthenticated) {
+    if (isAuthenticated()) {
         localStorage.removeItem(AUTH_CREDENTIALS.AUTH_KEY);
         localStorage.removeItem(AUTH_CREDENTIALS.USER_KEY);
         return true;
