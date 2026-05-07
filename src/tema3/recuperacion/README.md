@@ -14,23 +14,30 @@ IzanShop/
 ├── login.html              # Página de inicio de sesión
 ├── cart.html               # Página del carrito de compras
 ├── dashboard.html          # Panel de administración
+├── cypress/                # Tests End-to-End (E2E)
+│   └── e2e/                # Casos de prueba
+│       ├── carrito.cy.js   # Tests del Carrito
+│       ├── dashboard.cy.js # Tests del Panel de Administración
+│       └── login.cy.js     # Tests de Autenticación
 ├── css/
 │   ├── main.css           # Estilos principales
 │   └── modal.css          # Estilos para el modal del CRUD
-└── js/
-    ├── main.js            # Lógica principal del catálogo
-    ├── cart.js            # Lógica del carrito
-    ├── dashboard.js       # Lógica del panel admin (CRUD)
-    ├── auth.js            # Sistema de autenticación
-    ├── data.js            # Datos iniciales (productos, usuarios, etc.)
-    ├── storage.js         # Gestión de localStorage
-    └── models/
-        ├── Cart.js        # Modelo del Carrito
-        ├── CartItem.js    # Modelo de Item del Carrito
-        ├── Product.js     # Modelo de Producto
-        ├── Category.js    # Modelo de Categoría
-        ├── User.js        # Modelo de Usuario
-        └── Role.js        # Modelo de Rol
+├── js/
+│   ├── main.js            # Lógica principal del catálogo
+│   ├── cart.js            # Lógica del carrito
+│   ├── dashboard.js       # Lógica del panel admin (CRUD)
+│   ├── auth.js            # Sistema de autenticación
+│   ├── data.js            # Datos iniciales (productos, usuarios, etc.)
+│   ├── storage.js         # Gestión de localStorage
+│   └── models/
+│       ├── Cart.js        # Modelo del Carrito
+│       ├── CartItem.js    # Modelo de Item del Carrito
+│       ├── Product.js     # Modelo de Producto
+│       ├── Category.js    # Modelo de Categoría
+│       ├── User.js        # Modelo de Usuario
+│       └── Role.js        # Modelo de Rol
+├── cypress.config.js       # Configuración de Cypress
+└── package.json            # Dependencias y scripts NPM
 ```
 
 ---
@@ -270,18 +277,22 @@ const subtotal = `${(price * quantity).toFixed(2)}€`;
 
 ### Opción 1: Servidor Local (Recomendado)
 
+Gracias a la integración con NPM, el proyecto cuenta con un servidor configurado:
+
 ```bash
-# Con Python 3
-python -m http.server 8000
+# Instalar dependencias primero
+npm install
 
-# Con Node.js
-npx serve
-
-# Con PHP
-php -S localhost:8000
+# Iniciar servidor local en el puerto 3000
+npm run serve
 ```
 
-Luego abre: `http://localhost:8000`
+Luego abre en tu navegador: `http://localhost:3000`
+
+Otras alternativas si no usas NPM:
+- Python 3: `python -m http.server 8000`
+- PHP: `php -S localhost:8000`
+- Node.js (global): `npx serve`
 
 ### Opción 2: Extensión Live Server en VS Code
 
@@ -290,6 +301,39 @@ Luego abre: `http://localhost:8000`
 3. Selecciona "Open with Live Server"
 
 **⚠️ Importante:** No abras los archivos HTML directamente desde el explorador (file:///) porque los módulos ES6 no funcionarán.
+
+---
+
+## 🧪 Testing End-to-End (E2E) con Cypress
+
+Se ha integrado **Cypress** para realizar pruebas End-to-End automatizadas. Estas pruebas simulan la interacción de un usuario real con la aplicación, asegurando que los flujos principales funcionen correctamente.
+
+### ¿Qué se está probando?
+1. **Autenticación (`login.cy.js`)**: 
+   - Verifica el inicio de sesión exitoso y los mensajes de error al fallar.
+   - Protección de rutas para usuarios no autenticados.
+2. **Carrito de Compras (`carrito.cy.js`)**:
+   - Añadir, modificar la cantidad y eliminar productos.
+   - Cálculo correcto de precios y actualización del badge del carrito.
+   - Vaciado del carrito.
+3. **Panel de Administración (`dashboard.cy.js`)**:
+   - Acceso exclusivo para administradores.
+   - Funcionalidades CRUD (Crear, Editar y Eliminar productos).
+
+### ¿Cómo ejecutar los tests?
+
+Asegúrate de que el servidor de desarrollo esté corriendo (`npm run serve`) en otra terminal, o utiliza el comando de tests automatizado:
+
+```bash
+# Abrir la interfaz gráfica de Cypress (Modo Interactivo)
+npm run cy:open
+
+# Ejecutar los tests en la consola (Modo Headless)
+npm run cy:run
+
+# Arrancar el servidor y ejecutar tests automáticamente
+npm run test
+```
 
 ---
 
@@ -395,6 +439,7 @@ Es hacer Create, Read, Update, Delete pero guardando en localStorage en vez de e
 ✅ Template Literals
 ✅ Array Methods (map, filter, reduce, find)
 ✅ Estructuración de proyectos
+✅ Testing Automático (E2E) con Cypress
 
 ---
 

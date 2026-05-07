@@ -1,0 +1,16 @@
+{
+  "name": "izanshop-tests",
+  "version": "1.0.0",
+  "description": "Tests E2E con Cypress para IzanShop",
+  "scripts": {
+    "serve": "serve . -l 3000",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "start-server-and-test serve http://localhost:3000 cy:run"
+  },
+  "devDependencies": {
+    "cypress": "^13.17.0",
+    "serve": "^14.2.4",
+    "start-server-and-test": "^2.0.9"
+  }
+}

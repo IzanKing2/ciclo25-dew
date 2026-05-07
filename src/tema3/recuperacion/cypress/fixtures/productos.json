@@ -1,0 +1,18 @@
+{
+  "productoNuevo": {
+    "titulo": "Producto de Test",
+    "precio": "99.99",
+    "categoria": "Ordenadores",
+    "imagen": "./img/pc/01.webp"
+  },
+  "productoEditado": {
+    "titulo": "Producto Editado",
+    "precio": "149.99"
+  },
+  "credenciales": {
+    "emailCorrecto": "admin@test.com",
+    "passwordCorrecto": "password",
+    "emailIncorrecto": "usuario@falso.com",
+    "passwordIncorrecto": "contraseñaFalsa"
+  }
+}
