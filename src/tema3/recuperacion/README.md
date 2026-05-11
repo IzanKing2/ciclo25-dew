@@ -15,19 +15,24 @@ IzanShop/
 ├── cart.html               # Página del carrito de compras
 ├── dashboard.html          # Panel de administración
 ├── cypress/                # Tests End-to-End (E2E)
-│   └── e2e/                # Casos de prueba
-│       ├── carrito.cy.js   # Tests del Carrito
-│       ├── dashboard.cy.js # Tests del Panel de Administración
-│       └── login.cy.js     # Tests de Autenticación
+│   ├── e2e/
+│   │   └── catalogo.cy.js      # Tests E2E del catálogo de productos
+│   ├── fixtures/
+│   │   └── productos.json      # Fixture de productos para Cypress
+│   └── support/
+│       ├── commands.js         # Comandos personalizados: cy.login(), cy.limpiarDatos()
+│       └── e2e.js
 ├── css/
 │   ├── main.css           # Estilos principales
 │   └── modal.css          # Estilos para el modal del CRUD
 ├── js/
+│   ├── __tests__/
+│   │   └── dummy.test.js       # Tests unitarios con Jest
 │   ├── main.js            # Lógica principal del catálogo
 │   ├── cart.js            # Lógica del carrito
-│   ├── dashboard.js       # Lógica del panel admin (CRUD)
 │   ├── auth.js            # Sistema de autenticación
 │   ├── data.js            # Datos iniciales (productos, usuarios, etc.)
+│   ├── dummy.js           # Fetch a dummyjson.com/users + renderizado
 │   ├── storage.js         # Gestión de localStorage
 │   └── models/
 │       ├── Cart.js        # Modelo del Carrito
@@ -287,6 +292,16 @@ npm install
 npm run serve
 ```
 
+### Scripts disponibles
+
+| Comando | Descripción |
+|---|---|
+| `npm run serve` | Levanta un servidor estático en `localhost:3000` |
+| `npm run test:unit` | Ejecuta los tests unitarios con Jest |
+| `npm run cy:open` | Abre la interfaz gráfica de Cypress |
+| `npm run cy:run` | Ejecuta los tests E2E en modo headless |
+| `npm test` | Levanta el servidor y ejecuta los tests E2E |
+
 Luego abre en tu navegador: `http://localhost:3000`
 
 Otras alternativas si no usas NPM:
@@ -304,25 +319,37 @@ Otras alternativas si no usas NPM:
 
 ---
 
-## 🧪 Testing End-to-End (E2E) con Cypress
+## 🧪 Testing
 
-Se ha integrado **Cypress** para realizar pruebas End-to-End automatizadas. Estas pruebas simulan la interacción de un usuario real con la aplicación, asegurando que los flujos principales funcionen correctamente.
+El proyecto cuenta con dos niveles de testing:
 
-### ¿Qué se está probando?
-1. **Autenticación (`login.cy.js`)**: 
-   - Verifica el inicio de sesión exitoso y los mensajes de error al fallar.
-   - Protección de rutas para usuarios no autenticados.
-2. **Carrito de Compras (`carrito.cy.js`)**:
-   - Añadir, modificar la cantidad y eliminar productos.
-   - Cálculo correcto de precios y actualización del badge del carrito.
-   - Vaciado del carrito.
-3. **Panel de Administración (`dashboard.cy.js`)**:
-   - Acceso exclusivo para administradores.
-   - Funcionalidades CRUD (Crear, Editar y Eliminar productos).
+---
 
-### ¿Cómo ejecutar los tests?
+### Tests Unitarios con Jest
 
-Asegúrate de que el servidor de desarrollo esté corriendo (`npm run serve`) en otra terminal, o utiliza el comando de tests automatizado:
+Prueban funciones de forma aislada, sin navegador ni red real. Se encuentran en `js/__tests__/`.
+
+**`dummy.test.js`** cubre las dos funciones de `dummy.js`:
+
+- **`getUsers()`**: verifica que llama a `fetch` con la URL correcta, devuelve el array de usuarios y lanza error si la red falla.
+- **`renderUsers(users)`**: verifica que crea `.dummy-user-list` dentro de `<main>`, genera un `.dummy-user-item` por usuario con imagen, nombre, email y rol correctos.
+
+```bash
+npm run test:unit
+```
+
+---
+
+### Tests E2E con Cypress
+
+Simulan la interacción de un usuario real en el navegador. Usan `cy.login()` para no repetir el flujo de autenticación en cada test.
+
+**`catalogo.cy.js`** (8 tests):
+- Carga los 12 productos iniciales
+- Filtrado por Ordenadores, Periféricos y Consolas (4 productos cada uno)
+- Restauración de todos los productos al pulsar "Todos los productos"
+- Cada tarjeta tiene título, precio, imagen y botón de agregar
+- El botón de categoría activa recibe la clase `active`
 
 ```bash
 # Abrir la interfaz gráfica de Cypress (Modo Interactivo)
@@ -332,8 +359,15 @@ npm run cy:open
 npm run cy:run
 
 # Arrancar el servidor y ejecutar tests automáticamente
-npm run test
+npm test
 ```
+
+#### Comandos personalizados de Cypress
+
+| Comando | Descripción |
+|---|---|
+| `cy.login()` | Establece `isAuthenticated` y `currentUser` en localStorage |
+| `cy.limpiarDatos()` | Limpia completamente el localStorage |
 
 ---
 
@@ -439,7 +473,8 @@ Es hacer Create, Read, Update, Delete pero guardando en localStorage en vez de e
 ✅ Template Literals
 ✅ Array Methods (map, filter, reduce, find)
 ✅ Estructuración de proyectos
-✅ Testing Automático (E2E) con Cypress
+✅ Testing E2E con Cypress
+✅ Testing Unitario con Jest (fetch mock, jsdom)
 
 ---
 
