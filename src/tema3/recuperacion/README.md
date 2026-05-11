@@ -512,8 +512,4 @@ Es hacer Create, Read, Update, Delete pero guardando en localStorage en vez de e
 
 ---
 
-## 🏆 ¡Buen trabajo!
-
-Has completado un proyecto completo de e-commerce con JavaScript vanilla. Este es un gran paso en tu aprendizaje como desarrollador web.
-
 **¡Sigue practicando! 💪**
