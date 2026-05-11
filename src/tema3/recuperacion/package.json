@@ -6,10 +6,17 @@
     "serve": "serve . -l 3000",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test": "start-server-and-test serve http://localhost:3000 cy:run"
+    "test": "start-server-and-test serve http://localhost:3000 cy:run",
+    "test:unit": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": ["**/js/__tests__/**/*.test.js"]
   },
   "devDependencies": {
     "cypress": "^13.17.0",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "serve": "^14.2.4",
     "start-server-and-test": "^2.0.9"
   }
