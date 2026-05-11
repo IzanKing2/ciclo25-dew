@@ -5,36 +5,42 @@
 # 💻 Desarrollo Web en Entorno Cliente (DEW)
 
 Repositorio personal para los ejercicios, prácticas y proyectos realizados en la asignatura **Desarrollo Web en Entorno Cliente (DEW)**.  
-Aquí se recopilan los trabajos relacionados con la **programación en JavaScript**, la **manipulación del DOM**, la **gestión de eventos**, el uso de **módulos ES6**, y otras competencias propias del desarrollo web moderno en el lado del cliente.
+Aquí se recopilan los trabajos relacionados con la **programación en JavaScript**, la **manipulación del DOM**, la **gestión de eventos**, el uso de **módulos ES6**, y otras competencias propias del desarrollo web moderno en el lado del cliente, incluyendo **testing automatizado**.
 
 ---
 
 ## 📂 Estructura del repositorio
 
+El repositorio está organizado principalmente en la carpeta `src/` agrupado por temas y tipos de actividad:
+
 ```txt
-├── tema1/ → Introducción a JavaScript, sintaxis básica
-├── tema2/ → POO, clases y módulos
-├── tema3/ → DOM, eventos y almacenamiento local
-├── proyectos/ → Prácticas completas o mini-apps
+├── src/
+│   ├── tema2/ → POO, clases y módulos (Actividades 1 a 5, prueba objetiva)
+│   ├── tema3/ → DOM, eventos, asincronía y carrito (Incluye proyecto de recuperación)
+│   ├── UT3_repaso/ → Ejercicios de repaso del Tema 3
+│   ├── testing/ → Ejercicios de introducción a pruebas unitarias
+│   └── tests/ → Configuración y proyectos de pruebas End-to-End (E2E) con Cypress
 ├── assets/ → Imágenes, estilos, recursos comunes
+├── docs/ → Documentación adicional
 └── README.md
 ```
 
-Cada carpeta puede incluir:
-- `index.html` → punto de entrada del ejercicio o proyecto  
-- `main.js` → lógica principal en JavaScript  
-- `/modules` → clases o utilidades reutilizables  
-- `/css` → estilos asociados  
+Cada carpeta de actividad suele incluir:
+- `index.html` → Punto de entrada del ejercicio o proyecto  
+- `script.js` / `main.js` → Lógica principal en JavaScript  
+- `/css` o `styles.css` → Estilos asociados  
+- `/cypress` → (En proyectos con testing) Pruebas E2E de la interfaz
 
 ---
 
 ## 🧩 Tecnologías y herramientas
 
-- **HTML5** — estructura y contenido  
-- **CSS3** — diseño y maquetación básica  
-- **JavaScript (ES6+)** — programación en entorno cliente  
-- **Visual Studio Code** — entorno principal de desarrollo  
-- **Git / GitHub** — control de versiones y seguimiento de avances  
+- **HTML5** — Estructura y contenido  
+- **CSS3** — Diseño y maquetación  
+- **JavaScript (ES6+)** — Programación en entorno cliente  
+- **Cypress** — Framework para pruebas automatizadas End-to-End (E2E)
+- **Visual Studio Code** — Entorno principal de desarrollo  
+- **Git / GitHub** — Control de versiones y seguimiento de avances  
 
 ---
 
@@ -43,22 +49,22 @@ Cada carpeta puede incluir:
 1. Comprender la estructura del DOM y manipularla mediante JavaScript.  
 2. Aplicar programación orientada a objetos (clases, herencia, módulos).  
 3. Gestionar eventos, formularios y validaciones en el cliente.  
-4. Utilizar almacenamiento local (`localStorage`, `sessionStorage`).  
-5. Desarrollar interfaces dinámicas sin frameworks externos.  
+4. Desarrollar interfaces dinámicas y manejar asincronía (`fetch`, `Promises`).  
+5. Implementar **Testing Automatizado** (Unitario y E2E) para asegurar la calidad del código.
 
 ---
 
-## 🧠 Ejemplo destacado
+## 🧠 Ejemplos destacados
 
-**Actividad 3 – Taller Mecánico**  
-> Proyecto de práctica basado en la creación de clases (`Vehículo`, `Servicio`, `TipoServicio`, `Estado`...), uso de arrays, métodos personalizados y renderizado dinámico en el DOM mediante JavaScript puro.
+- **Proyecto IzanShop (Recuperación Tema 3)**: Un e-commerce completo con gestión de carrito, productos y panel de administración, validado mediante pruebas automatizadas con Cypress.
+- **Taller Mecánico**: Proyecto de práctica basado en la creación de clases (`Vehículo`, `Servicio`...), uso de arrays y métodos personalizados.
 
 ---
 
 ## 📅 Seguimiento y evolución
 
 A lo largo del curso se irán añadiendo nuevos ejercicios, ejemplos y mini-proyectos.  
-Cada versión o práctica podrá incluir comentarios, capturas y mejoras progresivas en la organización del código.
+Cada versión o práctica podrá incluir comentarios, capturas y mejoras progresivas en la organización y calidad del código.
 
 ---
 
