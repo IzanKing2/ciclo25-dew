@@ -1,5 +1,7 @@
 # IzanShop - Proyecto E-commerce 🛒
 
+![Portada IzanShop](assets/img-principal.png)
+
 ## 📋 Descripción del Proyecto
 
 Este es un proyecto de e-commerce desarrollado con **JavaScript vanilla**, HTML y CSS. Implementa un sistema completo de gestión de productos, carrito de compras y panel de administración con operaciones CRUD simuladas.
@@ -368,6 +370,24 @@ npm test
 |---|---|
 | `cy.login()` | Establece `isAuthenticated` y `currentUser` en localStorage |
 | `cy.limpiarDatos()` | Limpia completamente el localStorage |
+
+---
+
+## 🎥 Evidencias de Tests
+
+### Tests Unitarios (Jest)
+
+![Tests unitarios con Jest](assets/unit-test.png)
+
+### Tests E2E - Consola (Cypress Headless)
+
+![Tests E2E en consola con Cypress](assets/cypress-test-console.png)
+
+### Tests E2E - Interfaz Gráfica (Cypress Interactive)
+
+[Ver video de ejecución de tests E2E](assets/Cypress-tests.mp4)
+
+> El video muestra la ejecución completa de los 8 tests E2E en la interfaz gráfica de Cypress.
 
 ---
 
