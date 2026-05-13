@@ -292,6 +292,38 @@ main {
     align-items: center;
 }
 
+.credentials {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    margin-bottom: 1rem;
+    color: var(--clr-main);
+    font-size: 0.8rem;
+    text-align: start;
+    margin-top: 1rem;
+    background: var(--clr-main-light);
+    padding: 1rem;
+    border-radius: .6rem;
+}
+
+.credentials h3 {
+    color: var(--clr-black);
+}
+
+.credentials p {
+    color: var(--clr-black);
+    border-left: 2px solid var(--clr-main);
+    padding: .3rem;
+    padding-left: .5rem;
+    background-color: var(--clr-gray);
+}
+
+.credentials code {
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.4rem;
+    color: var(--clr-main);
+}
+
 .login-box {
     display: flex;
     flex-direction: column;
